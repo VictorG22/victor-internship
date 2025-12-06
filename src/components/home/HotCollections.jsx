@@ -5,6 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import Skeleton from "../UI/Skeleton";
 
 const HotCollections = () => {
+  
   const [collection, setCollection] = useState([]);
 
   async function fetchCollection() {
