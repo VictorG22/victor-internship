@@ -5,9 +5,9 @@ import OwlCarousel from "react-owl-carousel";
 import Skeleton from "../UI/Skeleton";
 
 const HotCollections = () => {
-  const [collection, setCollection] = useState();
+  const [collection, setCollection] = useState([]);
 
-  async function fetchCollection(params) {
+  async function fetchCollection() {
     try {
       const res = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
@@ -19,10 +19,12 @@ const HotCollections = () => {
   }
 
   useEffect(() => {
-      fetchCollection(); 
+    setTimeout(() => {
+      fetchCollection();
+    }, 2000);
   }, []);
 
-  console.log(collection)
+  console.log(collection.length);
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -35,6 +37,7 @@ const HotCollections = () => {
             </div>
           </div>
           <OwlCarousel
+            key={collection.length}
             loop
             margin={10}
             nav
@@ -53,7 +56,7 @@ const HotCollections = () => {
               },
             }}
           >
-            {collection
+            {collection.length !== 0
               ? collection.map((item, index) => (
                   <div key={index}>
                     <div className="nft_coll">
@@ -89,17 +92,25 @@ const HotCollections = () => {
                   <div key={index}>
                     <div className="nft_coll">
                       <div className="nft_wrap">
-                        <Skeleton width="100%" height="200px" borderRadius="10px"/>
+                        <Skeleton
+                          width="100%"
+                          height="200px"
+                          borderRadius="10px"
+                        />
                       </div>
                       <div className="nft_coll_pp">
-                        <Skeleton width="50px" height="50px" borderRadius={100}/>
+                        <Skeleton
+                          width="50px"
+                          height="50px"
+                          borderRadius={100}
+                        />
                         <i className="fa fa-check"></i>
                       </div>
                       <div className="nft_coll_info">
                         <div>
-                        <Skeleton width="25%" height="20px"/>
+                          <Skeleton width="25%" height="20px" />
                         </div>
-                        <Skeleton width="20%" height="20px"/>
+                        <Skeleton width="20%" height="20px" />
                       </div>
                     </div>
                   </div>
