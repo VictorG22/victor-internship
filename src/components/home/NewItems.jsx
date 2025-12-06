@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Countdown from "../UI/Countdown";
 import Skeleton from "../UI/Skeleton";
@@ -107,7 +105,7 @@ const NewItems = () => {
                         </Link>
                       </div>
                       <div className="nft__item_info">
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${item.nftId}`}>
                           <h4>{item.title}</h4>
                         </Link>
                         <div className="nft__item_price">{`${item.price} ETH`}</div>
@@ -141,7 +139,7 @@ const NewItems = () => {
                         </div>
                       </div>
                       <div className="nft__item_info">
-                        <div to="/item-details">
+                        <div>
                           <Skeleton height='20px' width='60%'/>
                         </div>
                         <div className="nft__item_price">

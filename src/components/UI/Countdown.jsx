@@ -27,14 +27,11 @@ const Countdown = ({ endTime }) => {
   }, [endTime, timeLeft.finished]);
 
   return (
-    < >
-      {timeLeft.finished ? (
-        <>
-        </>
-      ) : (
+    <>
+      {timeLeft.finished && (
         <div className="de_countdown">
           {`${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
-        </ div>
+        </div>
       )}
     </>
   );
