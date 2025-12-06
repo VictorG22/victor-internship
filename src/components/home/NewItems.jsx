@@ -25,6 +25,7 @@ const NewItems = () => {
     }, 2000);
   }, []);
 
+  console.log(collection)
 
   return (
     <section id="section-items" className="no-bottom">
