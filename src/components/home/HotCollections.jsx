@@ -24,7 +24,6 @@ const HotCollections = () => {
     }, 2000);
   }, []);
 
-  console.log(collection.length);
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -69,6 +68,7 @@ const HotCollections = () => {
                           />
                         </Link>
                       </div>
+
                       <div className="nft_coll_pp">
                         <Link to="/author">
                           <img

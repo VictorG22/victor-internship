@@ -9,7 +9,7 @@ const ItemDetails = () => {
 
   const {id} = useParams();
 
-  const [item, setItem] = useState([])
+  const [item, setItem] = useState(null)
 
   async function fetchItem() {
     try {
@@ -25,7 +25,7 @@ const ItemDetails = () => {
   useEffect(() => {
     fetchItem()
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
 
 
@@ -46,7 +46,7 @@ const ItemDetails = () => {
               </div>
               <div className="col-md-6">
                 <div className="item_info">
-                  <h2>{`${item.title} #${item.code}`}</h2>
+                  <h2>{item ? `${item.title} #${item.code}` : 'Loading...'}</h2>
 
                   <div className="item_info_counts">
                     <div className="item_info_views">
