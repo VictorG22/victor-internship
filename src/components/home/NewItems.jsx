@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import Countdown from "../UI/Countdown";
-import Skeleton from "../UI/Skeleton";
 import OwlCarousel from "react-owl-carousel";
+import Card from "../UI/Card";
 
 const NewItems = () => {
   const [collection, setCollection] = useState([]);
@@ -20,12 +18,9 @@ const NewItems = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
       fetchCollection();
-    }, 2000);
   }, []);
 
-  console.log(collection)
 
   return (
     <section id="section-items" className="no-bottom">
@@ -58,101 +53,7 @@ const NewItems = () => {
               },
             }}
           >
-            {collection.length !== 0
-              ? collection.map((item, index) => (
-                  <div
-                    key={index}
-                  >
-                    <div className="nft__item">
-                      <div className="author_list_pp">
-                        <Link
-                          to="/author"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Creator: Monica Lucas"
-                        >
-                          <img className="lazy" src={item.authorImage} alt="" />
-                          <i className="fa fa-check"></i>
-                        </Link>
-                      </div>
-
-                      <Countdown endTime={item.expiryDate} />
-
-                      <div className="nft__item_wrap">
-                        <div className="nft__item_extra">
-                          <div className="nft__item_buttons">
-                            <button>Buy Now</button>
-                            <div className="nft__item_share">
-                              <h4>Share</h4>
-                              <a href="" target="_blank" rel="noreferrer">
-                                <i className="fa fa-facebook fa-lg"></i>
-                              </a>
-                              <a href="" target="_blank" rel="noreferrer">
-                                <i className="fa fa-twitter fa-lg"></i>
-                              </a>
-                              <a href="">
-                                <i className="fa fa-envelope fa-lg"></i>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <Link to={`/item-details/${item.nftId}`}>
-                          <img
-                            src={item.nftImage}
-                            className="lazy nft__item_preview"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
-                      <div className="nft__item_info">
-                        <Link to={`/item-details/${item.nftId}`}>
-                          <h4>{item.title}</h4>
-                        </Link>
-                        <div className="nft__item_price">{`${item.price} ETH`}</div>
-                        <div className="nft__item_like">
-                          <i className="fa fa-heart"></i>
-                          <span>{item.likes}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              : Array.from({ length: 6 }).map((_, index) => (
-                  <div
-                    key={index}
-                  >
-                    <div className="nft__item">
-                      <div className="author_list_pp">
-                        <div>
-                          <Skeleton width="50px" height="50px" borderRadius="100%"/>
-                          <i className="fa fa-check"></i>
-                        </div>
-                      </div>
-
-                      <div className="nft__item_wrap">
-
-                        <div>
-                          <Skeleton
-                          width="285px"
-                          height="350px"
-                          />
-                        </div>
-                      </div>
-                      <div className="nft__item_info">
-                        <div>
-                          <Skeleton height='20px' width='60%'/>
-                        </div>
-                        <div className="nft__item_price">
-                          <Skeleton height='15px' width='25%'/>
-                        </div>
-                        <div className="nft__item_like">
-                          <Skeleton height='15px' width='30px'/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            <Card collection={collection} />
           </OwlCarousel>
         </div>
       </div>

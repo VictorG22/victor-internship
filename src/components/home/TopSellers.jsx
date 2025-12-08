@@ -19,9 +19,7 @@ const TopSellers = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
       fetchCollection();
-    }, 2000);
   }, []);
   return (
     <section id="section-popular" className="pb-5">
