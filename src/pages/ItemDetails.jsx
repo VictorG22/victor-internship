@@ -46,7 +46,7 @@ const ItemDetails = () => {
                   <div className="col-md-6">
                     <div className="item_info">
                       <h2>
-                        ${item?.title} #${item.tag}
+                        {item?.title} #{item.tag}
                       </h2>
 
                       <div className="item_info_counts">
