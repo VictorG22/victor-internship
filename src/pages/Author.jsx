@@ -26,6 +26,7 @@ const Author = () => {
   }, []);
 
 
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -91,7 +92,7 @@ const Author = () => {
                         <i className="fa fa-check"></i>
                         <div className="profile_name">
                           <h4>
-                            Monica Lucas
+                            {author.authorName}
                             <span className="profile_username">{`@${author?.tag}`}</span>
                             <span id="wallet" className="profile_wallet">
                               {`${author?.address}`}
