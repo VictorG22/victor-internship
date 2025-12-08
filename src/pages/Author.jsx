@@ -22,10 +22,9 @@ const Author = () => {
   }
   useEffect(() => {
     window.scrollTo(0, 0);
-    // fetchAuthorCollection();
+    fetchAuthorCollection();
   }, []);
 
-  console.log(author);
 
   return (
     <div id="wrapper">
