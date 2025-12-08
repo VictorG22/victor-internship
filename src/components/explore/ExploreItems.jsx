@@ -12,9 +12,8 @@ const ExploreItems = () => {
   const [cardViewCount, setCardViewCount] = useState(8);
 
   function handleResultsCount() {
-  setCardViewCount(prev => prev + 4);
-}
-
+    setCardViewCount((prev) => prev + 4);
+  }
 
   async function fetchCollection(sortValue) {
     if (sortRes !== "") {
@@ -23,7 +22,7 @@ const ExploreItems = () => {
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${sortValue}`
         );
         setCollection(res.data);
-        setResultsMax(res.data.length)
+        setResultsMax(res.data.length);
       } catch (err) {
         console.error(err);
       }
@@ -33,22 +32,17 @@ const ExploreItems = () => {
           "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
         );
         setCollection(res.data);
-        setResultsMax(res.data.length)
+        setResultsMax(res.data.length);
       } catch (err) {
         console.error(err);
       }
   }
 
-
-
-
-
   useEffect(() => {
     setCollection([]);
-    setCardViewCount(8)
+    setCardViewCount(8);
     fetchCollection(sortRes);
   }, [sortRes]);
-
 
   return (
     <>
@@ -57,6 +51,7 @@ const ExploreItems = () => {
           id="filter-items"
           onChange={(e) => setSortRes(e.target.value)}
           defaultValue=""
+          data-aos="fade-right"
         >
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
@@ -64,11 +59,11 @@ const ExploreItems = () => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-      <Card collection={collection} setViewLimit={cardViewCount} />
+        <Card collection={collection} setViewLimit={cardViewCount} />
       {cardViewCount >= resultsMax ? (
         <></>
       ) : (
-        <div className="col-md-12 text-center">
+        <div data-aos="fade-up" className="col-md-12 text-center">
           <button
             id="loadmore"
             onClick={handleResultsCount}

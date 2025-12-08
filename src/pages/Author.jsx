@@ -33,13 +33,14 @@ const Author = () => {
         <div id="top"></div>
 
         {author.length === 0 ? (
-          <Skeleton height={"360px"} width={"100%"} />
+          <Skeleton data-aos="fade" height={"360px"} width={"100%"} />
         ) : (
           <section
             id="profile_banner"
             aria-label="section"
             className="text-light"
             data-bgimage="url(images/author_banner.jpg) top"
+            data-aos="fade"
             style={{ background: `url(${AuthorBanner}) top` }}
           ></section>
         )}
@@ -51,7 +52,7 @@ const Author = () => {
                 {author.length === 0 ? (
                   <div className="d_profile de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_avatar">
+                      <div data-aos="fade-right" className="profile_avatar">
                         <Skeleton
                           width={"150px"}
                           height={"150px"}
@@ -71,7 +72,7 @@ const Author = () => {
                       </div>
                     </div>
                     <div className="profile_follow de-flex">
-                      <div className="de-flex-col">
+                      <div data-aos="fade-left" className="de-flex-col">
                         <div className="profile_follower">
                           <Skeleton width={"50px"} height={"24px"} />
                         </div>
@@ -86,7 +87,7 @@ const Author = () => {
                 ) : (
                   <div className="d_profile de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_avatar">
+                      <div data-aos="fade-right" className="profile_avatar">
                         <img src={author?.authorImage} alt="" />
 
                         <i className="fa fa-check"></i>
@@ -105,7 +106,7 @@ const Author = () => {
                       </div>
                     </div>
                     <div className="profile_follow de-flex">
-                      <div className="de-flex-col">
+                      <div data-aos="fade-left" className="de-flex-col">
                         <div className="profile_follower">{`${author?.followers}`}</div>
                         <Link to="#" className="btn-main">
                           Follow
