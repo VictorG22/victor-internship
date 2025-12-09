@@ -7,6 +7,7 @@ import Skeleton from "../components/UI/Skeleton";
 
 const Author = () => {
   const [author, setAuthor] = useState([]);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   const { id } = useParams();
 
@@ -20,12 +21,15 @@ const Author = () => {
       console.error(err);
     }
   }
+
+  const handleSubmit = () => {
+    setIsFollowing((prev) => !prev);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchAuthorCollection();
   }, []);
-
-
 
   return (
     <div id="wrapper">
@@ -107,10 +111,21 @@ const Author = () => {
                     </div>
                     <div className="profile_follow de-flex">
                       <div data-aos="fade-left" className="de-flex-col">
-                        <div className="profile_follower">{`${author?.followers}`}</div>
-                        <Link to="#" className="btn-main">
-                          Follow
-                        </Link>
+                        {isFollowing ? (
+                          <>
+                            <div className="profile_follower">{`${author?.followers + 1}`}</div>
+                            <button onClick={handleSubmit} className="btn-main">
+                              Unfollow
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <div className="profile_follower">{`${author?.followers}`}</div>
+                            <button onClick={handleSubmit} className="btn-main">
+                              Follow
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
